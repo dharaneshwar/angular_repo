@@ -1,0 +1,62 @@
+<div class="container">
+    
+  <div class="row">
+    
+    <div class="col-2"></div><div class="col-8">
+      <form>
+        
+        <div class="form-group">
+          <label for="soeid">SOEID</label>
+          <label>{{employee.soeid}}</label>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" ngModel placeholder="EmployeeName"
+            value = "{{employee.name}}" required >
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="text" class="form-control" id="age" name="age" ngModel placeholder="Employee age" value="{{employee.age}}"
+            required >
+        </div>
+     <!--   <div *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger">
+    
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div></div>-->
+
+        
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" name="phone" ngModel placeholder="Employee Phone" value="{{employee.phone_number}}"
+            required >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" ngModel
+            placeholder="EmployeEmail" 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+        </div>
+        <!--
+        <div *ngIf="email.touched">
+          <div *ngIf="email.errors?.required" class="alert alert-danger">Email is required</div>
+          <div *ngIf="email.errors?.pattern" class="alert alert-danger">This is not a valid Email</div>
+        </div>-->
+      
+
+        <button type="button" class="btn btn-primary" (click)="editEmployee(employee.soeid)">Make Changes</button>
+
+      </form>
+      
+    </div><div class="col-2">
+      <div *ngIf="response">
+        <div class="alert alert-info" role="alert">
+          {{response}}
+        </div>
+      </div>
+    </div></div></div>

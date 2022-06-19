@@ -1,0 +1,74 @@
+<div class="backgroundcolor">
+    <div class="container">
+
+        <div class="row">
+            <div class="alert alert-danger" role="alert" *ngIf="response">
+                {{response}}
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3 class="color">Current Employees</h3>
+                </div>
+                <div class="col">
+                    <app-employee-menu></app-employee-menu>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <div class="row">
+
+
+                    <table class="table table-bordered" class="table table-hover" *ngIf="employees">
+                        <thead>
+                        <tr class="table-success">
+                            <th>SL.No</th>
+                            
+                            <th>Soeid</th>
+                            
+                            <th>Name</th>
+                           
+                            <th>Age</th>
+                            <th>Email</th>
+                            <th>Phone number</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let employee of employees;let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{employee?.soeid}}</td>
+                            <td>{{employee?.name}}</td>
+                            <td>{{employee?.age}}</td>
+                            <td>{{employee?.email}}</td>
+                            <td>{{employee?.phone_number}}</td>
+                            <td>
+                                <button type = "button" class="btn btn-info" (click)="editEmployee(employee)">Edit</button>
+                            </td>
+                            <td>
+                                <button type = "button" class="btn btn-danger" (click)="deleteEmployee(employee)">Delete</button>
+                            </td>
+                         
+                        </tr>
+                    </tbody>
+                    </table>
+                   
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
