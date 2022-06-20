@@ -3,6 +3,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
 import { Employee } from 'src/app/Models/employee';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-employee-edit',
   templateUrl: './employee-edit.component.html',
@@ -44,13 +45,31 @@ export class EmployeeEditComponent implements OnInit {
     let age = (<HTMLInputElement>document.getElementById('age')).value;
     let email = (<HTMLInputElement>document.getElementById('email')).value;
     let phone_number = (<HTMLInputElement>document.getElementById('phone')).value;
+    
+  if (Number.isNaN(Number(age))){
+        alert("Age is not in number format");
+    }
 
+    if (!email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")){
+      alert("Email is not in right format");
+   }
+
+   if (!phone_number.match("[789][0-9]{9}")){
+    alert("Phone number is not in right format");
+}
+
+  if (!Number.isNaN(Number(age)) &&  email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")  && phone_number.match("[789][0-9]{9}")){
     this.employee= new Employee(soeid, name, Number(age), email, phone_number);
 
+    console.log(age, email, phone_number);
     this.employeeService.editEmployee(this.employee).subscribe(data =>{
-    this.message = "Edited Successfully";
-    this.router.navigate(['/']);
-  });
+      this.message = "Edited Successfully";
+      this.router.navigate(['/home']);
+    });
+  }
+
+  else
+    this.message = "Not in the right format. Try again"
   
 }
 }

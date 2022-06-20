@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/Models/employee';
 import { EmployeeService } from 'src/app/Services/employee.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,12 +13,16 @@ export class EmployeeListComponent implements OnInit {
 
   employees: Employee[]=[];
   response:any;
+  isAuthorized: boolean = false;
   
-  constructor(private employeeService:EmployeeService,private router:Router) { }
+  constructor(private employeeService:EmployeeService, private authService : AuthService , private router:Router) { }
 
   ngOnInit(): void {
     this.employeeService.getAllEmployees().subscribe(data=>
       this.employees=data);
+
+    this.isAuthorized = this.authService.getIsAuthorized();
+    console.log("Auth?"+this.isAuthorized);
   }
 
   editEmployee(employee: Employee)

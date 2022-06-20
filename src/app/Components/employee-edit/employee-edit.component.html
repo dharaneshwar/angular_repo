@@ -1,13 +1,19 @@
 <div class="container">
-    
-  <div class="row">
-    
+  
+  <div class="row"  style="background-color: #24a0ed;">
+    <div class="col">
+        <h3 class="color">  EDIT COMPONENT</h3>
+    </div>
+    </div>
+  
+    <div class="row">
     <div class="col-2"></div><div class="col-8">
       <form>
         
         <div class="form-group">
-          <label for="soeid">SOEID</label>
-          <label>{{employee.soeid}}</label>
+          <label for="soeid">SOEID  :</label>
+
+          <label><strong>{{employee.soeid}}</strong></label>
         </div>
 
         <div class="form-group">
@@ -32,7 +38,7 @@
 
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="text" class="form-control" id="phone" name="phone" ngModel placeholder="Employee Phone" value="{{employee.phone_number}}"
+          <input type="text" class="form-control" id="phone" name="phone" pattern="[789][0-9]{9}" ngModel placeholder="Employee Phone" value="{{employee.phone_number}}"
             required >
         </div>
 
@@ -54,9 +60,9 @@
       </form>
       
     </div><div class="col-2">
-      <div *ngIf="response">
+      <div *ngIf="message">
         <div class="alert alert-info" role="alert">
-          {{response}}
+          {{message}}
         </div>
       </div>
     </div></div></div>

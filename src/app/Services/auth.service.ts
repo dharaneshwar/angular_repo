@@ -9,6 +9,9 @@ import { Credentials } from '../Models/credentials';
 })
 export class AuthService {
 
+  isAuthenticated : boolean;
+  isAuthorized : boolean;
+
 private baseUrl='http://localhost:8080/api/auth';
   constructor(private http:HttpClient) { }
 
@@ -18,8 +21,28 @@ private baseUrl='http://localhost:8080/api/auth';
    authenticate(soeid : string):Observable<any>{
       let credHeaders = new HttpHeaders({'Content-Type': 'application/json'});
       console.log("came till auth");
-     return this.http.post(`${this.baseUrl}/${soeid}`, {headers:credHeaders});
+     return this.http.get(`${this.baseUrl}/${soeid}`);
 
+   }
+
+   setIsAuthenticated(auth : boolean)
+   {
+    this.isAuthenticated=auth;
+   }
+
+   getAuthStatus()
+   {
+      return this.isAuthenticated;
+   }
+
+   setIsAuthorized(auth : boolean)
+   {
+    this.isAuthorized = auth;
+   }
+
+   getIsAuthorized()
+   {
+    return this.isAuthorized;
    }
 
 }

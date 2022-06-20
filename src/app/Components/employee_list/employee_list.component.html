@@ -54,10 +54,10 @@
                             <td>{{employee?.email}}</td>
                             <td>{{employee?.phone_number}}</td>
                             <td>
-                                <button type = "button" class="btn btn-info" (click)="editEmployee(employee)">Edit</button>
+                                <button type = "button" class="btn btn-info" (click)="editEmployee(employee)" [disabled]="!isAuthorized">Edit</button>
                             </td>
                             <td>
-                                <button type = "button" class="btn btn-danger" (click)="deleteEmployee(employee)">Delete</button>
+                                <button type = "button" class="btn btn-danger" (click)="deleteEmployee(employee)" [disabled]="!isAuthorized">Delete</button>
                             </td>
                          
                         </tr>

@@ -1,5 +1,9 @@
 <div class="container">
-    
+  <div class="row"  style="background-color: #24a0ed;">
+    <div class="col">
+        <h3 class="color">  CREATE COMPONENT</h3>
+    </div>
+    </div>
     <div class="row">
       
       <div class="col-2"></div><div class="col-8">
@@ -7,7 +11,7 @@
           
           <div class="form-group">
             <label for="soeid">SOEID</label>
-            <input type="text" class="form-control" id="soeid" name="soeid" ngModel placeholder="EmployeeName"
+            <input type="text" class="form-control" maxlength="7" id="soeid" name="soeid" ngModel placeholder="EmployeeName"
               required >
           </div>
 
@@ -38,7 +42,7 @@
 
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="phone" name="phone" ngModel placeholder="Employee Phone"
+            <input type="text" class="form-control" id="phone" name="phone" pattern="[789][0-9]{9}" ngModel placeholder="Employee Phone"
               required >
           </div>
           <!--
@@ -52,9 +56,9 @@
         </form>
         
       </div><div class="col-2">
-        <div *ngIf="response">
+        <div *ngIf="message">
           <div class="alert alert-info" role="alert">
-            {{response}}
+            {{message}}
           </div>
         </div>
       </div></div></div>
